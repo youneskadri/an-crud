@@ -1,0 +1,14 @@
+<!-- app.component.html -->
+<div>
+    <h1>Données Swagger :</h1>
+    <pre>{{ swaggerData | json }}</pre>
+  
+    <h2>Ajouter des Données :</h2>
+    <!-- Formulaire pour ajouter des données (peut être un formulaire réel dans la vraie application) -->
+    <form (ngSubmit)="addData()">
+      <label for="dataField">Donnée :</label>
+      <input type="text" id="dataField" [(ngModel)]="newData.dataField" required>
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+  
