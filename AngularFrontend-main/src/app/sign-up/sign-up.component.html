@@ -1,0 +1,69 @@
+<section class="py-5">
+  <div class="container py-5">
+    <div class="row mb-4 mb-lg-5">
+      <div class="col-md-8 col-xl-6 text-center mx-auto">
+        <p class="fw-bold text-success mb-2">Sign up</p>
+        <h2 class="fw-bold">Welcome</h2>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6 col-xl-4">
+        <div class="card">
+          <div class="card-body text-center d-flex flex-column align-items-center">
+            <div class="bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person">
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+            </svg></div>
+            <form method="post" #form="ngForm">
+              <div class="mb-3"><input class="form-control" type="text" required minlength="3" pattern="[a-zA-Z]*" name="firstname" #firstname="ngModel" [(ngModel)]="user.firstname" placeholder="Firstname"></div>
+              <div *ngIf="firstname.invalid && (firstname.touched || firstname.dirty)">
+                <div class="m-3 text-danger" *ngIf="firstname.errors!['required']"> Firstname is required !!</div>
+                <div class="m-3 text-danger" *ngIf="firstname.errors!['minlength']"> Firstname must have at least 3 characters !!</div>
+                <div class="m-3 text-danger" *ngIf="firstname.errors!['pattern']"> Firstname must only contain characters !!</div>
+              </div>
+              <div class="mb-3"><input class="form-control" type="text" required minlength="3" pattern="[a-zA-Z]*" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname" placeholder="Lastname"></div>
+              <div *ngIf="lastname.invalid && (lastname.touched || lastname.dirty)">
+                <div class="m-3 text-danger" *ngIf="lastname.errors!['required']"> Lastname is required !!</div>
+                <div class="m-3 text-danger" *ngIf="lastname.errors!['minlength']"> Lastname must have at least 3 characters !!</div>
+                <div class="m-3 text-danger" *ngIf="lastname.errors!['pattern']"> Lastname must only contain characters !!</div>
+              </div>
+              <div class="mb-3"><input class="form-control" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel" [(ngModel)]="user.email" placeholder="Email"></div>
+              <div *ngIf="email.invalid && (email.touched || email.dirty)">
+                <div class="m-3 text-danger" *ngIf="email.errors!['required']"> Email is required !!</div>
+                <div class="m-3 text-danger" *ngIf="email.errors!['pattern']"> Not a valid Email !!</div>
+              </div>
+              <div class="mb-3"><input class="form-control" type="text" required minlength="8" pattern="[0-9]{8}" name="cin" #cin="ngModel" [(ngModel)]="user.cin" placeholder="CIN"></div>
+              <div *ngIf="cin.invalid && (cin.touched || cin.dirty)">
+                <div class="m-3 text-danger" *ngIf="cin.errors!['required']"> CIN is required !!</div>
+                <div class="m-3 text-danger" *ngIf="cin.errors!['pattern']"> CIN must contain 8 characters !!</div>
+              </div>
+              <div class="mb-3"><input class="form-control" type="text" required minlength="3" pattern="[a-zA-Z]*" name="ecole" #ecole="ngModel" [(ngModel)]="user.ecole" placeholder="Ecole"></div>
+              <div *ngIf="ecole.invalid && (ecole.touched || ecole.dirty)">
+                <div class="m-3 text-danger" *ngIf="ecole.errors!['required']"> Ecole is required !!</div>
+                <div class="m-3 text-danger" *ngIf="ecole.errors!['minlength']"> Ecole must have at least 3 characters !!</div>
+                <div class="m-3 text-danger" *ngIf="ecole.errors!['pattern']"> Ecole must only contain characters !!</div>
+              </div>
+              <div class="mb-3"><input class="form-control" type="date" required name="date" #dateNaiss="ngModel" [(ngModel)]="user.dateNaissance" placeholder="Date de naissance"></div>
+              <div *ngIf="dateNaiss.invalid && (dateNaiss.touched || dateNaiss.dirty)">
+                <div class="m-3 text-danger" *ngIf="ecole.errors!['required']"> Ecole is required !!</div>
+              </div>
+              <div class="mb-3"><input class="form-control" type="password" required minlength="6" name="password" #password="ngModel" [(ngModel)]="user.password" placeholder="Password"></div>
+              <div *ngIf="password.invalid && (password.touched || password.dirty)">
+                <div class="m-3 text-danger" *ngIf="password.errors!['required']"> Password is required !!</div>
+                <div class="m-3 text-danger" *ngIf="password.errors!['minlength']"> Password must have at least 6 numbers !!</div>
+              </div>
+              <div class="mb-3"><select class="form-control" required name="role" #role="ngModel" [(ngModel)]="user.role" >
+                <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+              </select>
+              </div>
+              <div *ngIf="role.invalid && (role.touched || role.dirty)">
+                <div class="m-3 text-danger" *ngIf="role.errors!['required']"> Ecole is required !!</div>
+              </div>
+              <div class="mb-3"><button class="btn btn-primary shadow d-block w-100" type="submit" (click)="onSubmit()" [disabled]="form.invalid">Sign up</button></div>
+              <p class="text-muted">Already have an account?&nbsp;<a routerLink="/sign-in">Log in</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

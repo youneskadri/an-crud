@@ -1,0 +1,61 @@
+<app-backoffice>
+    <div class="gestion-demande-container">
+      <h1>Gestion des Demandes</h1>
+  
+      <!-- Message Display -->
+      <div *ngIf="message" class="message">{{ message }}</div>
+  
+      <!-- Demande List -->
+      <table class="demande-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let demande of demandes">
+            <td>{{ demande.id }}</td>
+            <td>{{ getDemandeType(demande.typeDemande) }}</td>
+            <td>{{ getStatut(demande.statut) }}</td>
+            <td>{{ demande.dateDemande | date: 'dd/MM/yyyy' }}</td>
+            <td>
+              <button (click)="viewDemande(demande.id)" class="btn btn-view">View</button>
+              <button (click)="editDemande(demande)" class="btn btn-edit">Edit</button>
+              <button (click)="confirmDelete(demande.id)" class="btn btn-delete">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <!-- Create/Edit Demande Form -->
+      <form (ngSubmit)="editDemandeId ? updateDemande() : createDemande()" class="demande-form">
+        <div class="form-group">
+          <label for="type">Type:</label>
+          <select id="type" [(ngModel)]="newDemande.typeDemande" name="type" required>
+            <option *ngFor="let type of demandeTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="statut">Statut:</label>
+          <select id="statut" [(ngModel)]="newDemande.statut" name="statut" required>
+            <option *ngFor="let statut of statutTypes" [value]="statut">{{ statut }}</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" id="date" [(ngModel)]="newDemande.dateDemande" name="date" required />
+        </div>
+  
+        <!-- Additional form fields as necessary -->
+  
+        <button type="submit" class="btn btn-submit">{{ editDemandeId ? 'Update' : 'Create' }} Demande</button>
+      </form>
+    </div>
+  </app-backoffice>
+  

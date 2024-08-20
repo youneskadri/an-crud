@@ -1,0 +1,52 @@
+<app-backoffice>
+<form  [formGroup]="UniversiteForm" (ngSubmit)="add(UniversiteForm)">
+    <div class="mb-3">
+        <label >nom universite</label>
+    <input  class="form-control" type="text" formControlName="nomUniversite">
+    <div class="alert alert-danger"
+          *ngIf="nomUniversite.invalid && (nomUniversite.touched || nomUniversite.dirty)">
+                  <div *ngIf="nomUniversite.errors!['required']">nomUniversite is required !</div>
+                  <div *ngIf="nomUniversite.errors!['minlength']">nomUniversite must have at least 3 characters !</div>
+                  <div *ngIf="nomUniversite.errors!['pattern']">nomUniversite invalid !</div>
+          </div>
+          <br>
+          <label >adresse</label>
+    <input  class="form-control" type="text" formControlName="adresse">
+    <div class="alert alert-danger"
+          *ngIf="adresse.invalid && (adresse.touched || adresse.dirty)">
+                  <div *ngIf="adresse.errors!['required']">adresse is required !</div>
+                  <div *ngIf="adresse.errors!['minlength']">adresse must have at least 3 characters !</div>
+                  <div *ngIf="adresse.errors!['pattern']">adresse invalid !</div>
+          </div>
+
+   <div>
+    <br>
+     <div *ngIf="!updating">
+
+    <label >foyer</label>
+    <select formControlName="foyer" class="form-select">
+        <option value="" disabled>Select Foyer</option>
+        <option *ngFor="let foyer of Foyers" [value]="foyer.idFoyer">{{ foyer.nomFoyer }}</option>
+      </select>
+
+
+
+
+   </div>
+   </div>
+
+  </div>
+
+  <div *ngIf="!updating" class="mb-3">
+    <input type="submit" value="Ajouter" class="btn btn-primary" >
+  </div>
+
+  <div *ngIf="updating" class="mb-3">
+    <input type="submit" value="Modifier" class="btn btn-primary" >
+  </div>
+           <div class="mb-3 ">
+    <button [routerLink]="['/admin/gestion-universite']" class="btn btn-secondary">Liste Universites</button>
+            </div>
+
+  </form>
+</app-backoffice>

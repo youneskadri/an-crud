@@ -1,0 +1,44 @@
+<app-backoffice>
+    <form  [formGroup]="ChambreForm" (ngSubmit)="add(ChambreForm)">
+        <div class="mb-3">
+            <label >Numero Chambre</label>
+        <input  class="form-control" type="number" formControlName="numeroChambre">
+        <div class="alert alert-danger"
+              *ngIf="numeroChambre.invalid && (numeroChambre.touched || numeroChambre.dirty)">
+                      <div *ngIf="numeroChambre.errors!['required']">numeroChambre is required !</div>
+                      <div *ngIf="numeroChambre.errors!['minlength']">numeroChambre must have at least 3 characters !</div>
+                      <div *ngIf="numeroChambre.errors!['min']">numeroChambre must be > 0 !</div>
+                      <div *ngIf="numeroChambre.errors!['pattern']">numeroChambre invalid !</div>
+              </div>
+              <br>
+              <div>
+                <label for="typeC">Type de Chambre</label>
+                <select formControlName="typeC" id="typeC">
+                  <option *ngFor="let type of chambreTypes" [value]="type">{{ type }}</option>
+                </select>
+              </div>
+        
+        
+              <div  *ngIf="!update" class="mb-3">
+                <label for="idBloc">Choose Bloc to affect</label>
+                <select formControlName="idBloc" id="idBloc">
+                  <option *ngFor="let id of BlocIds" [value]="id.idBloc">{{ id.nomBloc}}</option>
+                </select>
+              </div>
+              
+      
+        
+      </div>
+      <div *ngIf="!update" class="mb-3">
+        <input type="submit" value="Ajouter" class="btn btn-primary" >
+      </div>
+    
+      <div *ngIf="update" class="mb-3">
+        <input type="submit" value="Modifier" class="btn btn-primary" >
+      </div>
+      
+      </form>
+
+
+
+    </app-backoffice>

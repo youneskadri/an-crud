@@ -1,0 +1,13 @@
+<app-backoffice>
+
+  <div style="text-align:center">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [title]="chartOptions.title"
+    ></apx-chart>
+  </div>
+
+  <button [routerLink]="['/admin/gestion-foyer']" class="btn btn-primary">Retour</button>
+</app-backoffice>

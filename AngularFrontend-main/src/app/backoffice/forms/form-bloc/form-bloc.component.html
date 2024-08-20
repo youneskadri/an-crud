@@ -1,0 +1,49 @@
+<app-backoffice>
+    <form  [formGroup]="BlocForm" (ngSubmit)="add(BlocForm)">
+        <div class="mb-3">
+            <label >nom Bloc</label>
+        <input  class="form-control" type="text"  [value]="" formControlName="nomBloc">
+        <div class="alert alert-danger"
+              *ngIf="nomBloc.invalid && (nomBloc.touched || nomBloc.dirty)">
+                      <div *ngIf="nomBloc.errors!['required']">nomBloc is required !</div>
+                      <div *ngIf="nomBloc.errors!['minlength']">nomBloc must have at least 3 characters !</div>
+                      <div *ngIf="nomBloc.errors!['pattern']">nomBloc invalid !</div>
+              </div>
+              <br>
+              <label >capacite Bloc</label>
+        <input  class="form-control" type="number" formControlName="capaciteBloc">
+        <div class="alert alert-danger"
+              *ngIf="capaciteBloc.invalid && (capaciteBloc.touched || capaciteBloc.dirty)">
+                      <div *ngIf="capaciteBloc.errors!['required']">capaciteBloc is required !</div>
+                      <div *ngIf="capaciteBloc.errors!['minlength']">capaciteBloc must have at least 3 characters !</div>
+                      <div *ngIf="capaciteBloc.errors!['min']">capaciteBloc must be > 0 !</div>
+                      <div *ngIf="capaciteBloc.errors!['pattern']">capaciteBloc invalid !</div>
+              </div>
+        
+        
+              <div *ngIf="!update" class="mb-3" >
+                <br>
+                <label>Foyer</label>
+                <select formControlName="foyer" class="form-select">
+                  <option value="" disabled>Select Foyer</option>
+                  <option *ngFor="let f of foyer" [value]="f.idFoyer">{{ f.nomFoyer }}</option>
+                </select>
+              </div>
+              
+              
+      
+        
+      </div>
+      <div *ngIf="!update" class="mb-3">
+        <input type="submit" value="Ajouter" class="btn btn-primary" >
+      </div>
+    
+      <div *ngIf="update" class="mb-3">
+        <input type="submit" value="Modifier" class="btn btn-primary" >
+      </div>
+      
+      </form>
+
+
+
+    </app-backoffice>

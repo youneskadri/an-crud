@@ -1,0 +1,114 @@
+.table {
+
+    --bs-table-accent-bg: white;
+
+}
+.delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: orange;
+    size: 1cm;
+
+  }
+
+  .edit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: gray;
+  
+
+    margin-left: 10px
+
+  }
+  .edit-button svg {
+    width: 24px; /* Set width of the SVG icon */
+    height: 24px; /* Set height of the SVG icon */
+    vertical-align: middle; /* Optional: Align the icon vertically */
+  }
+  .delete-button svg {
+    width: 24px; /* Set width of the SVG icon */
+    height: 24px; /* Set height of the SVG icon */
+    vertical-align: middle; /* Optional: Align the icon vertically */
+  }
+
+  .delete-button:hover svg {
+    background: none; 
+ }
+  
+  .delete-button:active svg {
+    background: forestgreen;
+  }
+  /* Add this CSS in your stylesheet or component's CSS file */
+.table-container {
+    width: 100%; /* Adjust the width as needed */
+    
+    overflow: auto; /* Add scrollbar if table content exceeds the height */
+  }
+  
+  /* Add this CSS in your stylesheet or component's CSS file */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .centered-content {
+    margin: 0 20px; /* Adjust left and right margins as needed */
+    text-align: center;
+  }
+  
+  .table-container {
+    width: 100%;
+    max-width: 800px; /* Adjust maximum width as needed */
+    overflow: auto;
+  }
+  
+  /* Your existing delete-button and other styles */
+  .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px; /* Adjust the border-radius to change the roundness */
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow effect */
+  }
+  
+  th,
+  td {
+    padding: 10px; /* Adjust padding as needed */
+    text-align: left;
+  }
+  
+
+  .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px; /* Adjust the border-radius to change the roundness */
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow effect */
+  }
+  
+  th,
+  td {
+    padding: 10px; /* Adjust padding as needed */
+    text-align: left;
+  }
+  
+  /* Optional: Apply styles for smaller screens */
+  @media screen and (max-width: 768px) {
+    .table {
+      border-radius: 0; /* Remove border-radius for smaller screens */
+    }
+  
+    th,
+    td {
+      padding: 8px; /* Adjust padding for smaller screens */
+    }
+  }

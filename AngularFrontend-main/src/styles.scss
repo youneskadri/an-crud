@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'ngx-toastr/toastr';
+@import "node_modules/bootstrap-icons/font/bootstrap-icons.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.username-icon {
+  background-color: #cbd5e1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0c0a09;
+}
+

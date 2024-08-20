@@ -1,0 +1,44 @@
+<app-backoffice>
+    <form  [formGroup]="FoyerForm" (ngSubmit)="add()">
+        <div class="mb-3">
+            <label >nom Foyer</label>
+        <input  class="form-control" type="text" formControlName="nomFoyer">
+        <div class="alert alert-danger"
+              *ngIf="nomFoyer.invalid && (nomFoyer.touched || nomFoyer.dirty)">
+                      <div *ngIf="nomFoyer.errors!['required']">nomFoyer is required !</div>
+                      <div *ngIf="nomFoyer.errors!['minlength']">nomFoyer must have at least 3 characters !</div>
+                      <div *ngIf="nomFoyer.errors!['pattern']">nomFoyer invalid !</div>
+              </div>
+              <br>
+              <label >capacite Foyer</label>
+        <input  class="form-control" type="number" formControlName="capaciteFoyer">
+        <div class="alert alert-danger"
+              *ngIf="capaciteFoyer.invalid && (capaciteFoyer.touched || capaciteFoyer.dirty)">
+                      <div *ngIf="capaciteFoyer.errors!['required']">capaciteFoyer is required !</div>
+                      <div *ngIf="capaciteFoyer.errors!['minlength']">capaciteFoyer must have at least 3 characters !</div>
+                      <div *ngIf="capaciteFoyer.errors!['pattern']">capaciteFoyer invalid !</div>
+              </div>
+
+
+
+
+      </div>
+
+
+      <div *ngIf="updating == false" class="mb-3">
+        <input type="submit" value="Ajouter" class="btn btn-primary" >
+      </div>
+
+      <div *ngIf="updating == true" class="mb-3">
+        <input type="submit" value="Modifier" class="btn btn-primary" >
+      </div>
+
+
+      <div class="mb-3 ">
+        <button [routerLink]="['/admin/gestion-foyer']" class="btn btn-secondary">Liste Foyers</button>
+                </div>
+      </form>
+
+
+
+    </app-backoffice>
